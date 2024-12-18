@@ -2,58 +2,47 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
-import { FaUser, FaLock } from 'react-icons/fa'; // Import icons from react-icons
+import { FaUser, FaLock } from 'react-icons/fa';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { API_ENDPOINT } from './Api';
+import { API_ENDPOINT } from '/src/Api/api.jsx';
+
 
 function Login() {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Check if user is already logged in
-  const fetchUser = () => {
+  useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      setUser({ token }); // Or decode and set user info if needed
-      navigate('/dashboard'); // Redirect to dashboard if logged in
+      navigate('/dashboard');
     }
-  };
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
+
     try {
       const response = await axios.post(`${API_ENDPOINT}/api/auth/login`, {
         username,
-        passwordx: password, // Use password state but send it as passwordx
+        password: password,
       });
-      
-      localStorage.setItem('token', JSON.stringify(response.data.token)); // Save token
-      setUser({ token: response.data.token }); // Optionally set the user data
+
+      const token = response.data.token;
+      localStorage.setItem('token', JSON.stringify(token));
       setError('');
       setLoading(false);
-      
-      // Add a delay before redirecting to dashboard
-      setTimeout(() => {
-        navigate('/dashboard');
-      }, 2000); // Wait for 2 seconds before navigating (adjust time as needed)
-  
+      navigate('/dashboard');
     } catch (error) {
-      console.error('Login Error:', error.response?.data || error.message); // Log backend error
+      console.error('Login Error:', error.response?.data || error.message);
       setError('Invalid username or password');
       setLoading(false);
     }
@@ -61,9 +50,19 @@ function Login() {
 
   return (
     <>
-      <Navbar bg="success" data-bs-theme="dark">
+      <Navbar style={{ backgroundColor: '#0a0a0a', backgroundImage: 'linear-gradient(to right, #00d2ff, #00a1ff)', padding: '1rem 0' }} variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Naga College Foundation, Inc.</Navbar.Brand>
+          <Navbar.Brand 
+            href="#home" 
+            style={{
+              color: '#eae2b7', 
+              fontWeight: 'bold', 
+              fontFamily: 'monospace', 
+              fontSize: '1.8rem'
+            }}
+          >
+            Cryptoset Institute of Computing
+          </Navbar.Brand>
         </Container>
       </Navbar>
 
@@ -82,61 +81,75 @@ function Login() {
                 }}
               />
             </div>
-            <div className="card shadow" style={{ borderRadius: '10px', padding: '20px' }}>
+            <div className="card shadow" style={{ borderRadius: '12px', padding: '20px', backgroundColor: '#ffffff', borderColor: '#fcbf49' }}>
               <div className="card-body">
-                <h5 className="text-center mb-4 fs-3 fw-bold">Login</h5>
+                <h5 className="text-center mb-4 fs-3 fw-bold" style={{ color: '#f77f00', fontFamily: 'monospace' }}>Login</h5>
                 <Form onSubmit={handleSubmit}>
                   <Form.Group controlId="formUsername" className="mb-3">
-                    <Form.Label style={{ fontWeight: 'bold' }}>Username:</Form.Label>
+                    <Form.Label style={{ color: '#333' }}>Username:</Form.Label>
                     <div className="input-group">
-                      <span className="input-group-text">
+                      <span className="input-group-text" style={{ backgroundColor: '#d3d3d3' }}>
                         <FaUser />
                       </span>
                       <Form.Control
-                        className="form-control-sm rounded-0"
                         type="text"
                         placeholder="Enter Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
+                        style={{
+                          backgroundColor: '#f5f5f5',
+                          borderRadius: '8px',
+                          border: '1px solid #ccc',
+                          color: '#333',
+                        }}
                       />
                     </div>
                   </Form.Group>
 
                   <Form.Group controlId="formPassword" className="mb-3">
-                    <Form.Label style={{ fontWeight: 'bold' }}>Password:</Form.Label>
+                    <Form.Label style={{ color: '#333' }}>Password:</Form.Label>
                     <div className="input-group">
-                      <span className="input-group-text">
+                      <span className="input-group-text" style={{ backgroundColor: '#d3d3d3' }}>
                         <FaLock />
                       </span>
                       <Form.Control
-                        className="form-control-sm rounded-0"
                         type="password"
                         placeholder="Enter Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
+                        style={{
+                          backgroundColor: '#f5f5f5',
+                          borderRadius: '8px',
+                          border: '1px solid #ccc',
+                          color: '#333',
+                        }}
                       />
                     </div>
                   </Form.Group>
 
                   {error && <p className="text-danger">{error}</p>}
 
-                  <Button
-                    variant="success"
-                    className="btn btn-block bg-custom btn-flat rounded-0"
-                    size="sm"
-                    type="submit"
-                    disabled={loading}
+                  <Button 
+                    variant="primary" 
+                    type="submit" 
+                    disabled={loading} 
+                    className="w-100" 
+                    style={{ 
+                      borderRadius: '8px', 
+                      backgroundColor: '#00d2ff', 
+                      border: '1px solid #00d2ff', 
+                    }}
                   >
-                    {loading ? 'Logging in...' : 'Login Now'}
+                    {loading ? 'Logging in...' : 'Login'}
                   </Button>
                 </Form>
 
                 <div className="text-center mt-3">
                   <p>
                     Don't have an account?{' '}
-                    <a href="/register" className="text-success">
+                    <a href="/register" className="text-success fw-bold" style={{ textDecoration: 'none', color: '#f77f00', fontFamily: 'monospace' }}>
                       Register here.
                     </a>
                   </p>
