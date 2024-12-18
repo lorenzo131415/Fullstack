@@ -1,16 +1,19 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #2a2a2a; /* Dark background with a mysterious vibe */
-  --gryffindor-red: #9b111e; /* Gryffindor red */
-  --gryffindor-gold: #f8b704; /* Gryffindor gold */
-  --hufflepuff-yellow: #f0c330; /* Hufflepuff yellow */
-  --ravenclaw-blue: #003b5c; /* Ravenclaw blue */
-  --slytherin-green: #2d6a4f; /* Slytherin green */
+  background-color: #1a1a1a; /* Dark background */
+  
+  --primary-color: #5c6bc0; /* Soft Blue */
+  --secondary-color: #ffca28; /* Golden Yellow */
+  --accent-color: #ff4081; /* Pink Accent */
+  --background-color: #212121; /* Background Color */
+  --input-background: #424242; /* Input Background */
+  --text-color: #fff;
+  --button-hover: #388e3c;
   
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,32 +23,32 @@
 
 a {
   font-weight: 500;
-  color: var(--gryffindor-gold);
-  text-decoration: inherit;
+  color: var(--secondary-color);
+  text-decoration: none;
 }
 
 a:hover {
-  color: var(--ravenclaw-blue);
+  color: var(--accent-color);
 }
 
 body {
   margin: 0;
   display: flex;
-  flex-direction: column;  /* Stack elements vertically */
+  flex-direction: column;
   place-items: center;
-  justify-content: center;  /* Center the content */
-  align-items: center;     /* Align items horizontally in the center */
+  justify-content: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #2a2a2a; /* Dark theme */
+  background-color: var(--background-color);
   padding: 2rem;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  color: var(--gryffindor-red);
-  margin-bottom: 1rem; /* Add space below the header */
+  color: var(--primary-color);
+  margin-bottom: 1rem;
 }
 
 button {
@@ -55,15 +58,16 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--gryffindor-red); /* Gryffindor Red for buttons */
+  background-color: var(--primary-color);
   cursor: pointer;
-  transition: border-color 0.25s;
-  color: #ffffff;
-  margin-top: 1.5rem;  /* Add space above the button */
+  transition: all 0.3s ease;
+  color: var(--text-color);
+  margin-top: 1.5rem;
 }
 
 button:hover {
-  border-color: var(--gryffindor-gold); /* Gryffindor Gold hover */
+  background-color: var(--button-hover);
+  border-color: var(--secondary-color);
 }
 
 button:focus,
@@ -71,48 +75,35 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: var(--gryffindor-red);
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
 /* Custom Hogwarts house styles */
 .gryffindor {
-  background-color: var(--gryffindor-red);
-  color: var(--gryffindor-gold);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   padding: 1em;
-  margin: 1rem 0; /* Add margin to elements with Gryffindor style */
+  margin: 1rem 0;
   text-align: center;
 }
 
 .hufflepuff {
-  background-color: var(--hufflepuff-yellow);
+  background-color: var(--secondary-color);
   color: #333;
   padding: 1em;
-  margin: 1rem 0; /* Add margin */
+  margin: 1rem 0;
   text-align: center;
 }
 
 .ravenclaw {
-  background-color: var(--ravenclaw-blue);
-  color: var(--gryffindor-gold); /* Contrast with yellow */
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   padding: 1em;
-  margin: 1rem 0; /* Add margin */
+  margin: 1rem 0;
   text-align: center;
 }
 
 .slytherin {
-  background-color: var(--slytherin-green);
-  color: #ffffff;
+  background-color: var(--accent-color);
+  color: var(--text-color);
   padding: 1em;
-  margin: 1rem 0; /* Add margin */
+  margin: 1rem 0;
   text-align: center;
 }

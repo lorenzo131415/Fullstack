@@ -11,7 +11,6 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { API_ENDPOINT } from '/src/Api/api.jsx';
 
-
 function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -33,7 +32,7 @@ function Login() {
     try {
       const response = await axios.post(`${API_ENDPOINT}/api/auth/login`, {
         username,
-        password: password,
+        password,
       });
 
       const token = response.data.token;
@@ -50,18 +49,18 @@ function Login() {
 
   return (
     <>
-      <Navbar style={{ backgroundColor: '#0a0a0a', backgroundImage: 'linear-gradient(to right, #00d2ff, #00a1ff)', padding: '1rem 0' }} variant="dark">
+      <Navbar style={{ backgroundColor: '#023020', padding: '1rem 0' }} variant="dark">
         <Container>
           <Navbar.Brand 
             href="#home" 
             style={{
-              color: '#eae2b7', 
+              color: '#FFFFFF', 
               fontWeight: 'bold', 
               fontFamily: 'monospace', 
               fontSize: '1.8rem'
             }}
           >
-            Cryptoset Institute of Computing
+            Class Record
           </Navbar.Brand>
         </Container>
       </Navbar>
@@ -77,18 +76,18 @@ function Login() {
                   width: '200px',
                   height: '200px',
                   borderRadius: '50%',
-                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                  boxShadow: '0 4px 8px rgb(2, 48, 32)',
                 }}
               />
             </div>
-            <div className="card shadow" style={{ borderRadius: '12px', padding: '20px', backgroundColor: '#ffffff', borderColor: '#fcbf49' }}>
+            <div className="card shadow" style={{ borderRadius: '12px', padding: '20px', backgroundColor: '#023020', borderColor: '#FFFFFF' }}>
               <div className="card-body">
-                <h5 className="text-center mb-4 fs-3 fw-bold" style={{ color: '#f77f00', fontFamily: 'monospace' }}>Login</h5>
+                <h5 className="text-center mb-4 fs-3 fw-bold" style={{ color: '#FFFFFF', fontFamily: 'monospace' }}>Login</h5>
                 <Form onSubmit={handleSubmit}>
                   <Form.Group controlId="formUsername" className="mb-3">
-                    <Form.Label style={{ color: '#333' }}>Username:</Form.Label>
+                    <Form.Label style={{ color: '#FFFFFF' }}>Username:</Form.Label>
                     <div className="input-group">
-                      <span className="input-group-text" style={{ backgroundColor: '#d3d3d3' }}>
+                      <span className="input-group-text" style={{ backgroundColor: '#616161' }}>
                         <FaUser />
                       </span>
                       <Form.Control
@@ -98,19 +97,19 @@ function Login() {
                         onChange={(e) => setUsername(e.target.value)}
                         required
                         style={{
-                          backgroundColor: '#f5f5f5',
+                          backgroundColor: '#FFFFFF',
                           borderRadius: '8px',
                           border: '1px solid #ccc',
-                          color: '#333',
+                          color: '#FFFFFF',
                         }}
                       />
                     </div>
                   </Form.Group>
 
                   <Form.Group controlId="formPassword" className="mb-3">
-                    <Form.Label style={{ color: '#333' }}>Password:</Form.Label>
+                    <Form.Label style={{ color: '#FFFFFF' }}>Password:</Form.Label>
                     <div className="input-group">
-                      <span className="input-group-text" style={{ backgroundColor: '#d3d3d3' }}>
+                      <span className="input-group-text" style={{ backgroundColor: '#616161' }}>
                         <FaLock />
                       </span>
                       <Form.Control
@@ -120,10 +119,10 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                         style={{
-                          backgroundColor: '#f5f5f5',
+                          backgroundColor: '#FFFFFF',
                           borderRadius: '8px',
                           border: '1px solid #ccc',
-                          color: '#333',
+                          color: '#FFFFFF',
                         }}
                       />
                     </div>
@@ -138,8 +137,8 @@ function Login() {
                     className="w-100" 
                     style={{ 
                       borderRadius: '8px', 
-                      backgroundColor: '#00d2ff', 
-                      border: '1px solid #00d2ff', 
+                      backgroundColor: '#023020', 
+                      border: '1px solid #FFFFFF', 
                     }}
                   >
                     {loading ? 'Logging in...' : 'Login'}
@@ -147,9 +146,9 @@ function Login() {
                 </Form>
 
                 <div className="text-center mt-3">
-                  <p>
-                    Don't have an account?{' '}
-                    <a href="/register" className="text-success fw-bold" style={{ textDecoration: 'none', color: '#f77f00', fontFamily: 'monospace' }}>
+                  <p style={{ color: '#FFFFFF' }}>
+                    Don't have an account? {''}
+                    <a href="/register" className="text-success fw-bold" style={{ textDecoration: 'none', color: '#FFFFFF', fontFamily: 'monospace' }}>
                       Register here.
                     </a>
                   </p>

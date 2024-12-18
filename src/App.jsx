@@ -10,20 +10,22 @@ import Register from './Register';
 
 function App() {
   return (
-    <>
-      <Router>
-        <Row>
-          <Col md={12}>
-            <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/register" element={<Register />} />
-            </Routes>
-          </Col>
-        </Row>
-      </Router>
-    </>
+    <Router>
+      <Row>
+        <Col md={12}>
+          <div className="header">
+            <h1>Welcome to the App</h1>
+            <p>Connect, Learn, and Grow</p>
+          </div>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </Col>
+      </Row>
+    </Router>
   );
 }
 
