@@ -82,12 +82,12 @@ function Login() {
             </div>
             <div className="card shadow" style={{ borderRadius: '12px', padding: '20px', backgroundColor: '#023020', borderColor: '#FFFFFF' }}>
               <div className="card-body">
-                <h5 className="text-center mb-4 fs-3 fw-bold" style={{ color: '#FFFFFF', fontFamily: 'monospace' }}>Login</h5>
+                <h5 className="text-center mb-4 fs-3 fw-bold" style={{ color: '#023020', fontFamily: 'monospace' }}>Login</h5>
                 <Form onSubmit={handleSubmit}>
                   <Form.Group controlId="formUsername" className="mb-3">
                     <Form.Label style={{ color: '#FFFFFF' }}>Username:</Form.Label>
                     <div className="input-group">
-                      <span className="input-group-text" style={{ backgroundColor: '#616161' }}>
+                      <span className="input-group-text" style={{ backgroundColor: '#FFFFFF' }}>
                         <FaUser />
                       </span>
                       <Form.Control
@@ -97,7 +97,7 @@ function Login() {
                         onChange={(e) => setUsername(e.target.value)}
                         required
                         style={{
-                          backgroundColor: '#FFFFFF',
+                          backgroundColor: '#023020',
                           borderRadius: '8px',
                           border: '1px solid #ccc',
                           color: '#FFFFFF',
@@ -109,7 +109,7 @@ function Login() {
                   <Form.Group controlId="formPassword" className="mb-3">
                     <Form.Label style={{ color: '#FFFFFF' }}>Password:</Form.Label>
                     <div className="input-group">
-                      <span className="input-group-text" style={{ backgroundColor: '#616161' }}>
+                      <span className="input-group-text" style={{ backgroundColor: '#FFFFFF' }}>
                         <FaLock />
                       </span>
                       <Form.Control
@@ -119,7 +119,7 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                         style={{
-                          backgroundColor: '#FFFFFF',
+                          backgroundColor: '#023020',
                           borderRadius: '8px',
                           border: '1px solid #ccc',
                           color: '#FFFFFF',
