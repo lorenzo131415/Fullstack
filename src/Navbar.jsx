@@ -15,16 +15,20 @@ function NavBar() {
   };
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" className="mb-4">
+    <Navbar expand="lg" className="navbar-dark bg-gradient-primary p-4">
       <Container>
-        <Navbar.Brand as={Link} to="/">Dashboard</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" className="fw-bold fs-2 text-light">
+          Cryptoset Institute
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" onClick={toggleNavbar} />
         <Navbar.Collapse id="navbar-nav" className={isOpen ? 'show' : ''}>
           <Nav className="ml-auto">
-            <Nav.Link as={Link} to="/dashboard">Home</Nav.Link>
-            <Nav.Link as={Link} to="/login">Login</Nav.Link>
-            <Nav.Link as={Link} to="/register">Register</Nav.Link>
-            <Button variant="danger" onClick={logout}>Logout</Button>
+            <Nav.Link as={Link} to="/dashboard" className="text-light mx-3">Home</Nav.Link>
+            <Nav.Link as={Link} to="/login" className="text-light mx-3">Login</Nav.Link>
+            <Nav.Link as={Link} to="/register" className="text-light mx-3">Register</Nav.Link>
+            <Button variant="danger" onClick={logout} className="mx-3">
+              Logout
+            </Button>
           </Nav>
         </Navbar.Collapse>
       </Container>
